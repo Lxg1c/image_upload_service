@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse
 import os
+import uvicorn
 
 app = FastAPI()
 
@@ -32,3 +33,6 @@ async def get_file(filename: str):
     if os.path.exists(file_location):
         return FileResponse(file_location)
     return {"error": "Файл не найден"}
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
