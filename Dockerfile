@@ -1,5 +1,5 @@
-# Используем официальный образ Python
-FROM python:3.11
+# Используем официальный образ Python 3.13
+FROM python:3.13-slim
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . /app
 
 # Устанавливаем зависимости
-RUN pip install --no-cache-dir fastapi uvicorn
+RUN pip install --no-cache-dir fastapi uvicorn python-multipart
 
 # Открываем порт для приложения
 EXPOSE 8000
 
 # Запускаем FastAPI через Uvicorn
-CMD ["uvicorn", "your_script:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
