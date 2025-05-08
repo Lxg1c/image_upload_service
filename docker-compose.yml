@@ -1,5 +1,5 @@
 services:
-  imageUploader:
+  image_uploader:
     build: .
     ports:
       - "5000:8000"
